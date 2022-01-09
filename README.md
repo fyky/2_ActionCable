@@ -1,3 +1,3 @@
 # README
 
-ActionCbale(複数モデル）
+ActionCable(複数モデル）
