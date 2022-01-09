@@ -1,0 +1,15 @@
+<h1>ユーザー詳細ページ</h1>
+<h2>ユーザー名</h2>
+  <%= @user.name %>
+<h2>トーク関連</h2>
+<% if @is_room == true %>
+  <%= link_to "トークを始める", room_path(@room_id) %>
+<% else %>
+  <!-- roomsテーブルに情報を送信 -->
+  <%= form_with model: @room, url: room_path, local: true do |f|%>
+  <!-- room_usersテーブルに情報を送信 -->
+    <%#= hidden_field_tag 'room_user[user_id]', @user.id %>
+    <%= hidden_field :'room_user[user_id]', value: @user.id %>
+    <%= f.submit "チャットを始める", class: "send" %>
+  <% end %>
+<% end %>
