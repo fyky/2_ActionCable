@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @current_user_room_user = RoomUser.where(user_id: current_user.id)
     @user_room_user = RoomUser.where(user_id: @user.id)
     unless @user.id == current_user.id
-      @current_user_room_user.each do |u|
+      @current_user_room_user.each do |cu|
         @user_room_user.each do |u|
           if cu.room_id == u.room_id then
             @is_room = true
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     
       unless @is_room
         @room = Room.new
-        @entry = RoomUser.new
+        @room_user = RoomUser.new
       end
     end
 
