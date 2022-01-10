@@ -1,2 +1,15 @@
 <h1>ルーム詳細ページ</h1>
-<p>Find me in app/views/rooms/show.html.erb</p>
+  <h2>参加者</h2>
+    <!-- roomに入っているroom_userは2人いるのでeachで引っ張る -->
+    <% @room_users.each do |e| %>
+      <%= link_to e.user.name, user_path(e.user_id) %>
+    <% end %>
+  <h2>トーク</h2>
+    <!-- 入力フォーム -->
+    <!-- form_withだと余計なものが生成されるので<form>タグで実装 -->
+    <form>
+    <input type="text" data-behavior="room_speak">
+    </form>
+    
+    <!-- メッセージ表示 -->
+    <%= render "messages/message" %>

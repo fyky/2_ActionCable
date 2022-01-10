@@ -1,0 +1,8 @@
+<% if @messages.present? %>
+  <% @messages.each do |m| %>
+    <div>
+      <%= m.text %>
+      <%= m.created_at.strftime("%Y-%m-%d %H:%M") %>
+    </div>
+  <% end %>
+<% end %>

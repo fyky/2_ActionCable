@@ -11,6 +11,15 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
+    #roomに関するRoomUserが存在していれば
+    if RoomUser.where(user_id: current_user.id, room_id: @room.id).present?
+      #アソシエーションで引っ張り出せる
+      @messages = @room.messages
+      @message = Message.new
+      @room_users = @room.room_users
+    else
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   private
