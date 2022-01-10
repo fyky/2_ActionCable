@@ -7,9 +7,10 @@
   <h2>トーク</h2>
     <!-- 入力フォーム -->
     <!-- form_withだと余計なものが生成されるので<form>タグで実装 -->
-    <form>
-    <input type="text" data-behavior="room_speak">
-    </form>
-    
+    <div id="messages_all">
+      <form>
+        <input type="text" data-behavior="room_speak">
+      </form>
+    </div>
     <!-- メッセージ表示 -->
     <%= render "messages/message" %>
