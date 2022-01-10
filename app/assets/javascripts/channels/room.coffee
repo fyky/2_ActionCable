@@ -12,13 +12,14 @@ App.room = App.cable.subscriptions.create "RoomChannel",
 
   received: (data) ->
     #messages_allから抜き出したmessageを追加する
-    alert data['message']
-    # $('#messages_all').append data['message']
+    # alert data['message']
+    $('#messages_all').append data['message']
     # Called when there's incoming data on the websocket for this channel
 
   speak: (message) ->
     #performメソッドでブラウザから入力されたデータをサーバーサイドへ送信
-    @perform 'speak', message: message
+    #同時にroom_idとuser_idも送信
+    @perform 'speak', { message: message, room_id: $('#messages_all').data('room_id'), user_id: $('#messages_all').data('user_id') }
 
   # 'keypress' キーが押された時発火する
   $(document).on 'keypress', '[data-behavior~=room_speak]', (event) ->
