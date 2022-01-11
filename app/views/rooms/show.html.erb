@@ -7,10 +7,18 @@
   <h2>トーク</h2>
     <!-- 入力フォーム -->
     <!-- form_withだと余計なものが生成されるので<form>タグで実装 -->
-    <div id="messages_all">
       <form>
+        <%= hidden_field_tag :room_id, @room.id %>
+        <%= hidden_field_tag :user_id, current_user.id %>
         <input type="text" data-behavior="room_speak">
       </form>
-    </div>
+
+
     <!-- メッセージ表示 -->
-    <%= render "messages/message" %>
+    <%# if @messages.present? %>
+    <div id="messages_all">
+    <% @messages.each do |message| %>
+      <%= render 'messages/message', message: message %>
+    <% end %>
+      </div>
+    <%# end %>

@@ -1,6 +1,6 @@
 class Message < ApplicationRecord
-  belongs_to :user, optional: true
-  belongs_to :room, optional: true
+  belongs_to :user
+  belongs_to :room
 
   #無記入投稿とエンター長押し連続投稿を防ぐ
   #validates :text, presence: true
