@@ -19,7 +19,7 @@ App.room = App.cable.subscriptions.create "RoomChannel",
   speak: (message) ->
     #performメソッドでブラウザから入力されたデータをサーバーサイドへ送信
     #同時にroom_idとuser_idも送信
-    @perform 'speak', { message: message, room_id: $('#messages_all').data('room_id'), user_id: $('#messages_all').data('user_id') }
+    @perform 'speak', { message: message, room_id: $('#message').data('room_id'), user_id: $('#message').data('user_id') }
 
   # 'keypress' キーが押された時発火する
   $(document).on 'keypress', '[data-behavior~=room_speak]', (event) ->

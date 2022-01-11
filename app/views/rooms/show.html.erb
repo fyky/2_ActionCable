@@ -7,18 +7,19 @@
   <h2>トーク</h2>
     <!-- 入力フォーム -->
     <!-- form_withだと余計なものが生成されるので<form>タグで実装 -->
+    <!-- room_channel.rbにroom_idとuser_idを渡す -->
+    <div id="message" data-room_id="<%= params[:id] %>" data-user_id="<%= current_user.id %>">
       <form>
-        <%= hidden_field_tag :room_id, @room.id %>
-        <%= hidden_field_tag :user_id, current_user.id %>
+        <!-- message createはroom_channel.rbで行われるのでここで値を渡しても意味がない -->
         <input type="text" data-behavior="room_speak">
       </form>
-
+    </div>
 
     <!-- メッセージ表示 -->
-    <%# if @messages.present? %>
+    <% if @messages.present? %>
     <div id="messages_all">
     <% @messages.each do |message| %>
       <%= render 'messages/message', message: message %>
     <% end %>
       </div>
-    <%# end %>
+    <% end %>
